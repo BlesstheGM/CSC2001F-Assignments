@@ -1,0 +1,32 @@
+Select * From productlines;
+Select city, country From offices ORDER BY country, city;
+SELECT productVendor, productName, quantityInStock FROM products WHERE quantityInStock < 2000 AND (LOWER(productVendor) LIKE '%d%cast%');
+SELECT * FROM productlines LIMIT 1;
+SELECT country from offices where state is null
+Select round(avg(amount), 2) As mean, round(sum(amount), 2) As total FROM payments;
+SELECT city, postalCode from offices where country="USA" or country="UK";
+Select Distinct city FROM offices;
+SELECT round((max(buyPrice) * 1.7), 2) AS top FROM products;
+SELECT officeCode, COALESCE(state, country, city) As location FROM offices;
+SELECT customerNumber, round(sum(amount), 2) AS total FROM payments GROUP BY customerNumber;
+SELECT customerName AS CustomerName, round(sum(amount), 2) As total FROM customers JOIN payments ON customers.customerNumber=payments.customerNumber GROUP BY customerName;
+
+
+SELECT customerName, phone FROM customers LEFT JOIN payments ON customers.customerNumber = payments.customerNumber WHERE payments.amount IS Null;
+SELECT productName, quantityInStock, textDescription FROM products JOIN productlines ON products.productLine=productlines.productLines WHERE quantityInStock < 100;
+SELECT productCode, sum(quantityOrdered) As Total FROM orderdetails GROUP BY productCode ORDER BY total DESC LIMIT 1; 
+SELECT e.email
+FROM employees e
+JOIN (
+    SELECT salesRepEmployeeNumber, COUNT(customerNumber) AS num_customers
+    FROM customers
+    GROUP BY salesRepEmployeeNumber
+) AS sales_rep_counts ON e.employeeNumber = sales_rep_counts.salesRepEmployeeNumber
+JOIN (
+    SELECT COUNT(customerNumber) AS num_customers
+    FROM customers
+    WHERE salesRepEmployeeNumber = 1166
+) AS emp_1166_counts ON sales_rep_counts.num_customers < emp_1166_counts.num_customers
+WHERE e.jobTitle = 'Sales Rep';
+SELECT round(sum((priceEach * quantityOrdered)) ,2) As totalCost FROM orderdetails where ordernumber IN (SELECT orderNumber FROM orders WHERE customerNumber = 121);
+SELECT e.firstName, e.lastName, SUM(p.amount) AS total FROM employees e JOIN customers c ON e.employeeNumber = c.salesRepEmployeeNumber JOIN payments p ON c.customerNumber = p.customerNumber WHERE e.officeCode = 7 GROUP BY e.firstName, e.lastName;

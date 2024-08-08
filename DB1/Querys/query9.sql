@@ -1,0 +1,1 @@
+SELECT count(DISTINCT productVendor) AS numVendors FROM products;

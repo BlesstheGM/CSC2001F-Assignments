@@ -1,0 +1,1 @@
+SELECT productVendor, productName, quantityInStock FROM products WHERE quantityInStock < 2000 AND (LOWER(productVendor) LIKE '%d%cast%');

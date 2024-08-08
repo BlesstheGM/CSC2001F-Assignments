@@ -1,0 +1,6 @@
+square,red,spot square,red,solid circle,green,stripe
+triangle,green,stripe triangle,green,stripe triangle,green,stripe
+triangle,red,spot circle,blue,stripe square,blue,stripe
+square,green,spot circle,red,solid triangle,blue,stripe
+circle,blue,solid square,red,stripe circle,blue,solid
+circle,green,solid circle,blue,solid circle,red,solid

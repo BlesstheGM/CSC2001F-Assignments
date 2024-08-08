@@ -1,0 +1,1 @@
+Select round(avg(amount), 2) As mean, round(sum(amount), 2) As total FROM payments;

@@ -1,0 +1,1 @@
+SELECT customerNumber, round(sum(amount), 2) AS total FROM payments GROUP BY customerNumber;

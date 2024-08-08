@@ -1,0 +1,1 @@
+SELECT customerName AS CustomerName, round(sum(amount), 2) As total FROM customers JOIN payments ON customers.customerNumber=payments.customerNumber GROUP BY customerName;
